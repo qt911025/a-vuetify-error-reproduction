@@ -1,36 +1,19 @@
 Vuetify Bug reproduction
 
-I use this configuration to avoid "Multiple instance of Vue detected" error, and render the component thoroughly so that I can interact with in-component buttons like close button in v-alert.
+vue-jest@^4 has a compatible Jest version 25. However coverage test crashed.
 
-```js
-import { mount } from '@vue/test-utils'
-import Foo from './Foo'
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import { createElement } from './__test.utils.env'
+Error reports like:
+```
+  ● Test suite failed to run
 
-// use Vue instead of createLocalVue
-// use Vuetify explicitly
-Vue.use(Vuetify)
+    ~~/vue-jest-test2/Foo.vue: don't know how to turn this value into a node
 
-const vuetify = new Vuetify()
-
-describe('foo', () => {
-  it('1', () => {
-    const wrapper = mount(Foo, {
-      localVue: Vue,
-      attachTo: createElement(),
-      vuetify,
-      sync: false,
-    })
-
-    expect(wrapper.text()).toMatch(/foo/)
-
-    wrapper.destroy()
-  })
-})
+      at valueToNode (node_modules/@babel/types/lib/converters/valueToNode.js:87:9)
+          at transformFile.next (<anonymous>)
 ```
 
-**Issue:** It works well at Vuetify@~2.2.x, but crashed at 2.3.x
+**Reproduct:** install and `yarn run coverage`
 
-**Expected:** It works well at the latest version.
+**Issue:** It works well at Jest 24
+
+**Expected:** It works well at the latest version of Jest.
