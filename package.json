@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest --projects ."
+    "test": "jest --projects .",
+    "coverage": "jest --coverage --coverageReporters=text --runInBand --projects ."
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -14,16 +15,15 @@
     "@babel/preset-env": "^7.10.4",
     "@vue/test-utils": "^1.0.3",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.0.0",
+    "babel-jest": "^25.0.0",
     "flush-promises": "^1.0.2",
-    "jest": "^26.0.0",
+    "jest": "^25.0.0",
     "jest-serializer-vue": "^2.0.2",
     "vue-jest": "^4.0.0-beta.4",
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
     "@babel/runtime": "^7.10.3",
-    "vue": "^2.6.11",
-    "vuetify": "~2.2"
+    "vue": "^2.6.11"
   }
 }
